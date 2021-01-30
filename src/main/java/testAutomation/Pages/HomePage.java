@@ -23,7 +23,7 @@ public class HomePage extends Abstract_Step_Definition {
 
 	public void selectfromthedropdown(WebDriver driver, String Data) throws IOException, InterruptedException {
 
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		Thread.sleep(15000);;
 		List<WebElement> dropdown = driver.findElements(By.xpath(propertyload("HomePageDropdown")));
 
 		System.err.println("Lenghth =" + dropdown.size());
@@ -34,7 +34,15 @@ public class HomePage extends Abstract_Step_Definition {
 			System.out.println("printing the data text " + propertyload(Data).toString());
 			if (propertyload(Data).toString().contains(webElement.getText())) {
 
-				webElement.click();
+				try {
+					webElement.click();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					acceptcookies(driver);
+					Thread.sleep(5000);
+					webElement.click();
+					
+				}
 				break;
 			}
 

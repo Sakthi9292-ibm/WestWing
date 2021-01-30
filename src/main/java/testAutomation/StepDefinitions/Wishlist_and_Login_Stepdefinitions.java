@@ -36,7 +36,7 @@ public class Wishlist_and_Login_Stepdefinitions extends WishListPage {
 	@Then("^product should be visible on the wishlist$")
 	public void product_should_be_visible_on_the_wishlist() throws Throwable {
 
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		Thread.sleep(5000);
 		String product = propertyload("Product_name");
 		System.out.println("Product name " + product);
 

@@ -16,7 +16,7 @@ public class MobelPage extends HomePage {
 
 	public int numberofproductslisted(WebDriver driver) throws InterruptedException, IOException {
 
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		Thread.sleep(15000);
 
 		String products = driver.findElement(By.xpath(propertyload("MobelPageNumberofProducts"))).getText();
 
@@ -61,18 +61,26 @@ public class MobelPage extends HomePage {
 
 	public void addtowishlistByProductNumber(WebDriver driver, int itemid) throws IOException {
 
+		
+		String xpath = propertyload("MobelPageWishlistIcon") + "[" + String.valueOf(itemid) + "]";
+
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		try {
 			WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
 					By.xpath(propertyload("MobelPageWishlistIcon") + "[" + String.valueOf(itemid) + "]")));
+		
+
+		
+		driver.findElement(By.xpath(xpath)).click();
 		} catch (Exception e) {
 
 			acceptcookies(driver);
+			
+			WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
+					By.xpath(propertyload("MobelPageWishlistIcon") + "[" + String.valueOf(itemid) + "]")));
+		
+			driver.findElement(By.xpath(xpath)).click();
 		}
-
-		String xpath = propertyload("MobelPageWishlistIcon") + "[" + String.valueOf(itemid) + "]";
-
-		driver.findElement(By.xpath(xpath)).click();
 
 	}
 

@@ -30,11 +30,11 @@ public class Common_Step_Definitions extends Abstract_Step_Definition {
 
 	}
 
-	@After
+@After
 	public void fls() {
 
 		driver.quit();
-		driver = null;
+		//driver = null;
 
 	}
 

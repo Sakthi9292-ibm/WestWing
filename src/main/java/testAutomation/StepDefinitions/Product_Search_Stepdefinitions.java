@@ -45,7 +45,8 @@ public class Product_Search_Stepdefinitions extends WishListPage {
 
 	@Then("^I should see product listing page showing (\\d+)$")
 	public void i_should_see_product_listing_page_showing(int items) throws Throwable {
-
+		
+		
 		junit.framework.Assert.assertEquals(items, numberofproductslisted(driver));
 
 	}
